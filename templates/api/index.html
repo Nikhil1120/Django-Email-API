@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    <title>Mail App</title>
+</head>
+<body>
+    <style>/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #2d3e50;
+}
+
+/* Form Container */
+div {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Form Elements */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #2d3e50;
+}
+
+input, textarea {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+}
+
+input[type="email"], input[type="text"], textarea {
+    width: 100%;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Submit Button */
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    div {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    input, textarea {
+        font-size: 0.9rem;
+    }
+
+    input[type="submit"] {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Result Message */
+p {
+    margin-top: 15px;
+    color: #4CAF50;
+    font-weight: bold;
+    text-align: center;
+}
+</style>
+    <div>
+        <h1>Django Mail App</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            <label for="address">To:</label>
+            <input id="address" type="email" name="address"/>
+        
+            <label for="subject">Subject:</label>
+            <input id="subject" name="subject"/>
+        
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message"></textarea>
+
+            <input type="submit">
+        </form>
+        <p>{{ result }}</p>
+    </div>
+  
+</body>
+</html>
